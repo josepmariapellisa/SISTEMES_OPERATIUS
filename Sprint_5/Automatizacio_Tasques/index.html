@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../Sprint_4/raid_5/">
+        <link rel="prev" href="../Copies_Seguretat/">
       
       
-        <link rel="next" href="../Monitoratge_Logs/">
+        <link rel="next" href="../Quotes_usuaris_grups/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Servidor d'Actualitzacions - 0369-IMPLANTACIÓ DE SISTEMES OPERATIUS</title>
+        <title>Automatització de Tasques - 0369-IMPLANTACIÓ DE SISTEMES OPERATIUS</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#servidors-dactualitzacions" class="md-skip">
+        <a href="#automatitzacio-de-tasques-amb-cron-i-anacron-a-linux" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Servidor d'Actualitzacions
+              Automatització de Tasques
             
           </span>
         </div>
@@ -324,29 +324,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Servidor d'Actualitzacions
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Servidor_Actualitzacions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -355,88 +335,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#funcio-dels-servidors-dactualitzacions" class="md-nav__link">
-    Funció dels Servidors d'Actualitzacions
-  </a>
-  
-    <nav class="md-nav" aria-label="Funció dels Servidors d'Actualitzacions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-actualitzacions-de-seguretat" class="md-nav__link">
-    1. Actualitzacions de Seguretat
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-actualitzacions-de-programari" class="md-nav__link">
-    2. Actualitzacions de Programari
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-correccions-derrors" class="md-nav__link">
-    3. Correccions d'Errors
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-millores-de-rendiment" class="md-nav__link">
-    4. Millores de Rendiment
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tipus-de-servidors-dactualitzacio" class="md-nav__link">
-    Tipus de Servidors d'Actualització
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#com-funciona-el-proces-dactualitzacio" class="md-nav__link">
-    Com Funciona el Procés d'Actualització?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#beneficis-dels-servidors-dactualitzacions" class="md-nav__link">
-    Beneficis dels Servidors d'Actualitzacions
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -506,9 +404,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Automatizacio_Tasques/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Automatització de Tasques
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -517,6 +435,87 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-automatitzacio-de-tasques-a-linux" class="md-nav__link">
+    1. Automatització de Tasques a Linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cron-el-planificador-de-tasques-classic" class="md-nav__link">
+    2. Cron: El Planificador de Tasques Clàssic
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Cron: El Planificador de Tasques Clàssic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristiques-principals" class="md-nav__link">
+    Característiques principals
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-anacron-cron-per-a-sistemes-no-continus" class="md-nav__link">
+    3. Anacron: Cron per a Sistemes No Continus
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Anacron: Cron per a Sistemes No Continus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-concepte-basic" class="md-nav__link">
+    3.1. Concepte Bàsic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-principals-diferencies-amb-cron" class="md-nav__link">
+    3.2. Principals Diferències amb Cron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-com-funciona-anacron" class="md-nav__link">
+    3.3. Com Funciona Anacron?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -576,37 +575,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#funcio-dels-servidors-dactualitzacions" class="md-nav__link">
-    Funció dels Servidors d'Actualitzacions
+  <a href="#1-automatitzacio-de-tasques-a-linux" class="md-nav__link">
+    1. Automatització de Tasques a Linux
   </a>
   
-    <nav class="md-nav" aria-label="Funció dels Servidors d'Actualitzacions">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cron-el-planificador-de-tasques-classic" class="md-nav__link">
+    2. Cron: El Planificador de Tasques Clàssic
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Cron: El Planificador de Tasques Clàssic">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-actualitzacions-de-seguretat" class="md-nav__link">
-    1. Actualitzacions de Seguretat
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-actualitzacions-de-programari" class="md-nav__link">
-    2. Actualitzacions de Programari
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-correccions-derrors" class="md-nav__link">
-    3. Correccions d'Errors
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-millores-de-rendiment" class="md-nav__link">
-    4. Millores de Rendiment
+  <a href="#caracteristiques-principals" class="md-nav__link">
+    Característiques principals
   </a>
   
 </li>
@@ -617,23 +602,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tipus-de-servidors-dactualitzacio" class="md-nav__link">
-    Tipus de Servidors d'Actualització
+  <a href="#3-anacron-cron-per-a-sistemes-no-continus" class="md-nav__link">
+    3. Anacron: Cron per a Sistemes No Continus
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Anacron: Cron per a Sistemes No Continus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-concepte-basic" class="md-nav__link">
+    3.1. Concepte Bàsic
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#com-funciona-el-proces-dactualitzacio" class="md-nav__link">
-    Com Funciona el Procés d'Actualització?
+        
+          <li class="md-nav__item">
+  <a href="#32-principals-diferencies-amb-cron" class="md-nav__link">
+    3.2. Principals Diferències amb Cron
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#beneficis-dels-servidors-dactualitzacions" class="md-nav__link">
-    Beneficis dels Servidors d'Actualitzacions
+        
+          <li class="md-nav__item">
+  <a href="#33-com-funciona-anacron" class="md-nav__link">
+    3.3. Com Funciona Anacron?
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -652,76 +650,98 @@
                   
 
 
-<h1 id="servidors-dactualitzacions">Servidors d'Actualitzacions</h1>
-<p>Els <strong>servidors d'actualitzacions</strong> són servidors remots utilitzats per descarregar actualitzacions de programari, seguretat o altres dades necessàries per mantenir el bon funcionament i la seguretat dels sistemes. Aquests servidors permeten mantenir el programari actualitzat, protegir-lo contra vulnerabilitats i millorar la seva funcionalitat.</p>
-<p>Els servidors d'actualització no només s'utilitzen en sistemes operatius com Ubuntu, sinó que són una part fonamental en una gran varietat de dispositius i serveis.</p>
-<h2 id="funcio-dels-servidors-dactualitzacions">Funció dels Servidors d'Actualitzacions</h2>
-<h3 id="1-actualitzacions-de-seguretat">1. <strong>Actualitzacions de Seguretat</strong></h3>
-<ul>
-<li>Els sistemes operatius i aplicacions poden presentar vulnerabilitats de seguretat amb el temps.</li>
-<li>Els servidors d'actualitzacions ofereixen <strong>parches de seguretat</strong> per corregir aquestes vulnerabilitats i protegir el sistema de possibles atacs externs.</li>
-<li>Aquest tipus d'actualitzacions són essencials per mantenir la seguretat del sistema i evitar riscos com virus, malware o altres amenaces.</li>
-</ul>
-<h3 id="2-actualitzacions-de-programari">2. <strong>Actualitzacions de Programari</strong></h3>
-<ul>
-<li>Els servidors d'actualitzacions ofereixen noves versions d'aplicacions o eines que ja estan instal·lades al sistema.</li>
-<li>Aquestes actualitzacions poden incloure noves funcionalitats, millores d'ús o compatibilitat, així com afegir suport per noves tecnologies.</li>
-<li>També poden corregir errors o millorar la compatibilitat amb altres components del sistema.</li>
-</ul>
-<h3 id="3-correccions-derrors">3. <strong>Correccions d'Errors</strong></h3>
-<ul>
-<li>Els desenvolupadors llançan <strong>actualitzacions</strong> que poden corregir mal funcionament de programari o <strong>bugs</strong> detectats en versions anteriors.</li>
-<li>Aquestes correccions permeten que el programari funcioni de manera més eficaç i sense errors que podrien afectar l'experiència de l'usuari o la seguretat.</li>
-</ul>
-<h3 id="4-millores-de-rendiment">4. <strong>Millores de Rendiment</strong></h3>
-<ul>
-<li>Els servidors d'actualitzacions no només es centren en solucionar problemes, sinó que també poden incloure <strong>optimitzacions de rendiment</strong>.</li>
-<li>Aquests canvis poden ajudar a que el sistema o les aplicacions funcionin més ràpidament i eficientment, millorant l'ús de recursos com la memòria o la CPU.</li>
-</ul>
-<h2 id="tipus-de-servidors-dactualitzacio">Tipus de Servidors d'Actualització</h2>
-<p>Els servidors d'actualització poden estar distribuïts de diferents maneres:</p>
-<ul>
-<li><strong>Servidors Públics</strong>: Són accessibles per qualsevol usuari o organització, com els servidors d'actualització de sistemes operatius (per exemple, servidors de <strong>Ubuntu</strong> o <strong>Windows Update</strong>).</li>
-<li><strong>Servidors Privats</strong>: Utilitzats per organitzacions o empreses que volen controlar les actualitzacions de programari dins de la seva infraestructura interna.</li>
-<li><strong>Servidors Locals</strong>: En algunes xarxes, es poden configurar servidors locals que descarreguen actualitzacions d'un servidor central i les distribueixen als dispositius interns per millorar la velocitat i l'eficiència de la descàrrega.</li>
-</ul>
-<h2 id="com-funciona-el-proces-dactualitzacio">Com Funciona el Procés d'Actualització?</h2>
+<h1 id="automatitzacio-de-tasques-amb-cron-i-anacron-a-linux">Automatització de Tasques amb Cron i Anacron a Linux</h1>
+<h2 id="1-automatitzacio-de-tasques-a-linux">1. Automatització de Tasques a Linux</h2>
+<p>En entorns Linux, l'automatització de tasques és essencial per executar processos de manera programada sense intervenció manual. Això permet:
+- <strong>Estalviar temps</strong> en tasques repetitives
+- <strong>Millorar l'eficiència</strong> del sistema amb tasques en segon pla
+- <strong>Garantir l'execució puntual</strong> de processos crítics (com còpies de seguretat, actualitzacions o neteja del sistema)</p>
+<p>Els dos sistemes principals per a l'automatització són:
+- <strong>Cron</strong>: Ideal per a sistemes que estan sempre engegats (servidors)
+- <strong>Anacron</strong>: Dissenyat per a sistemes que no funcionen contínuament (ordinadors personals o portàtils)</p>
+<hr />
+<h2 id="2-cron-el-planificador-de-tasques-classic">2. Cron: El Planificador de Tasques Clàssic</h2>
+<p>Cron és un dimoni (<em>daemon</em>) que executa tasques en horaris específics basats en una configuració anomenada <strong>crontab</strong>.</p>
+<h3 id="caracteristiques-principals">Característiques principals</h3>
+<p>✔ <strong>Execució exacta en temps real</strong>: Si el sistema està apagat, la tasca <strong>no s'executa</strong><br />
+✔ <strong>Configuració per usuari</strong>: Cada usuari pot tenir el seu propi crontab<br />
+✔ <strong>Precisió en minuts</strong>: Permet programar tasques amb intervals molt específics  </p>
+<h2 id="3-anacron-cron-per-a-sistemes-no-continus">3. Anacron: Cron per a Sistemes No Continus</h2>
+<h3 id="31-concepte-basic">3.1. Concepte Bàsic</h3>
+<p>Anacron és un servei d'automatització dissenyat específicament per a sistemes que no estan engegats contínuament, com:
+- Ordinadors personals
+- Portàtils
+- Estacions de treball d'ús intermitent</p>
+<h3 id="32-principals-diferencies-amb-cron">3.2. Principals Diferències amb Cron</h3>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Anacron</th>
+<th>Cron</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dependència temporal</strong></td>
+<td>No requereix hora exacta</td>
+<td>Execució a hora precisa</td>
+</tr>
+<tr>
+<td><strong>Tolerància a apagats</strong></td>
+<td>Executa tasques pendents</td>
+<td>Salta tasques no executades</td>
+</tr>
+<tr>
+<td><strong>Unitats temporals</strong></td>
+<td>Treballa amb dies</td>
+<td>Treballa amb minuts/hores/dies</td>
+</tr>
+<tr>
+<td><strong>Entorn ideal</strong></td>
+<td>Sistemes no permanents</td>
+<td>Servidors 24/7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-com-funciona-anacron">3.3. Com Funciona Anacron?</h3>
 <ol>
-<li><strong>Verificació d'Actualitzacions</strong>: El sistema o aplicació verifica regularment la disponibilitat d'actualitzacions al servidor d'actualitzacions.</li>
-<li><strong>Descarrega les Actualitzacions</strong>: Quan es detecta que hi ha noves actualitzacions disponibles, el sistema les descarrega del servidor.</li>
-<li><strong>Instal·lació de les Actualitzacions</strong>: Un cop descarregades, les actualitzacions es poden instal·lar automàticament o requerir que l'usuari les instal·li manualment.</li>
-<li><strong>Reinici o Finalització</strong>: Algunes actualitzacions poden requerir un reinici del sistema o aplicació per completar la instal·lació i assegurar que els canvis tinguin efecte.</li>
+<li><strong>Mecanisme d'execució</strong>:</li>
+<li>Verifica les tasques pendents en l'inici del sistema</li>
+<li>Compara les dates dels darrers execucions</li>
+<li>
+<p>Executa les tasques que hagin superat el període definit</p>
+</li>
+<li>
+<p><strong>Gestió de retards</strong>:</p>
+</li>
+<li>Introdueix un retard aleatori per evitar càrregues simultànies</li>
+<li>Configurable per cada tasca</li>
 </ol>
-<h2 id="beneficis-dels-servidors-dactualitzacions">Beneficis dels Servidors d'Actualitzacions</h2>
-<ul>
-<li><strong>Seguretat Millorada</strong>: Les actualitzacions de seguretat són crucials per mantenir el sistema protegit.</li>
-<li><strong>Estabilitat</strong>: Les actualitzacions que corregeixen errors milloren l'estabilitat i el rendiment del sistema.</li>
-<li><strong>Noves Funcionalitats</strong>: Permeten que el programari s'actualitzi amb noves funcionalitats que milloren l'experiència de l'usuari.</li>
-<li><strong>Optimització</strong>: Milloren l'eficiència general del sistema, com la gestió de memòria o el consum de recursos.</li>
-</ul>
-<h1 id="documentacio-installacio-desatesa">Documentació Instal·lació desatesa.</h1>
-<h2 id="servidor">Servidor</h2>
-<p>En aquest apàrta procedirem a l'instalacio d'un servidor amb servei d'actualitzacions centralitzat. El primer pas de tot sera actualitzar la llista de paquets amb un apt update i a continuació instal·larem l'Apache2 servidor Web.
-<img alt="Captura" src="../../custom/Selecci%C3%B3_640.png" /></p>
-<p>Conjuntament instal·larem l'eina apt-mirror, aquesta eina ens permet descarregar de forma local els repositoris Apt, es a dir ens serveix per actualitzar i descarregar paquets, de manera local envers d'accedir a la xarxa.
-<img alt="Captura" src="../../custom/Selecci%C3%B3_641.png" /></p>
-<p>Aqui realitzarem un sudo nano del fitxer /etc/apt/mirror.list on haurem de afegir la linia penultima per establir el repositori al seveir mirror. Guardem i sortim.
-<img alt="Captura" src="../../custom/Selecci%C3%B3_642.png" /></p>
-<p>Despres realitzarem aquesta comanda per descarregar els paquets que hem definit anteriorment.
-<img alt="Captura" src="../../custom/Selecci%C3%B3_643.png" /></p>
-<p>I obtindrem un resultat com aquest.
-<img alt="Captura" src="../../custom/Selecci%C3%B3_644.png" /></p>
-<p>Per ultim executem aquesta comanda per afegir un enllaç simbòlic del paquet de chrome al seguent directori del servidor Apache2
-<img alt="Captura" src="../../custom/Selecci%C3%B3_645.png" /></p>
-<h2 id="client">Client</h2>
-<p>En aquest apartat realitzarem la configuracio del client per poder realitzar la baixada de repositoris de forma local, a continuació executem aquesta comanda que ens permetra baixar la signatura publica des de google amb un apt-key permeten la verificacio sobre la correctesa dels paquets sobre els quals descarregarem.
-<img alt="Captura" src="../../custom/Selecci%C3%B3_646.png" /></p>
-<p>Despres realitzarem un nano i editarem el fitxer /etc/apt/sources.list per establir la ruta del nostre servidor.
-<img alt="Captura" src="../../custom/Selecci%C3%B3_647.png" /></p>
-<p>Realitzarem un apt update i automaticament podrem comprovar que la primera font dels repositoris la busca directament al nostre servidor.
-<img alt="Captura" src="../../custom/Selecci%C3%B3_648.png" /></p>
-<p>Finalment instal·lem el paquet en concret google-chrome desde forma local es a dir desde el nostre servidor.
-<img alt="Captura" src="../../custom/Selecci%C3%B3_649.png" /></p>
+<h1 id="configuracions">Configuracions</h1>
+<p>Per aquest exemple, crearem dos fitxers dins del directori /home/Imágenes per verificar que l'script funciona correctament.</p>
+<p>Aqui crearem un script per automatitzar còpies de seguretat. S'hi pot veure la creació d'un arxiu comprimit amb tar que inclou la data i hora al nom del fitxer, indicant una tasca programada per preservar dades del directori d'imatges. La imatge reflecteix una fase inicial de configuració, on s'està provant la generació de backups des de la línia de comandes
+<img alt="Captura" src="../../custom/Selecci%C3%B3_762.png" /></p>
+<p>Assignem permisos d'execució al script amb la comanda chmod +x.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_763.png" /></p>
+<p>Aqui l'executem.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_764.png" /></p>
+<h2 id="automatitzacio-del-script-amb-crontab">Automatització del Script amb crontab</h2>
+<p>Editem el fitxer /etc/crontab i afegim la linia de baix de tot. La captura mostra l'edició del fitxer de configuració /etc/crontab utilitzant l'editor GNU nano, on es defineixen tasques programades a nivell de sistema en entorns Linux. S'hi visualitzen les estructures bàsiques per configurar cron-jobs, incloent els camps per minuts, hores, dies i mesos, juntament amb exemples de tasques automatitzades predefinides. Es destaquen les entrades per executar scripts periòdics (diaris, setmanals i mensuals) mitjançant els directoris cron.daily, cron.weekly i cron.monthly.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_765.png" /></p>
+<p>Finalment, esperem uns minuts i podem observar que s'ha realitzat la copia dels arxius.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_767.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_768.png" /></p>
+<h2 id="automatitzacio-del-script-amb-anacron">Automatització del Script amb Anacron</h2>
+<p>Aqui mourem el script al directori cron.daily i el copiarem.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_769.png" /></p>
+<p>Entrem al fitxer Cron.daily i eliminem tot el contingut.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_770.png" /></p>
+<p>Ara editarem el fitxer /etc/anacrontab i modificarem el valor 1 per a que s'executi despres d'iniciar l'equip.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_771.png" /></p>
+<p>Amb això, Anacron s'encarregarà d'executar l'script diàriament quan l'ordinador estigui en funcionament.
+Reiniciem l'ordinador, esperem un minut i verifiquem que el procés s'ha executat correctament.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_772.png" /></p>
 
 
 
