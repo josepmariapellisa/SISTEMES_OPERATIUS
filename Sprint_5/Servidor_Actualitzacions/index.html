@@ -1,0 +1,874 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Sprint_4/raid_5/">
+      
+      
+        <link rel="next" href="../Monitoratge_Logs/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Servidor d'Actualitzacions - 0369-IMPLANTACIÓ DE SISTEMES OPERATIUS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#servidors-dactualitzacions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-header__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Servidor d'Actualitzacions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-nav__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4/raid_teoria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raids
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4/raid_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raid 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 5 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 5 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Servidor d'Actualitzacions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Servidor d'Actualitzacions
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#funcio-dels-servidors-dactualitzacions" class="md-nav__link">
+    Funció dels Servidors d'Actualitzacions
+  </a>
+  
+    <nav class="md-nav" aria-label="Funció dels Servidors d'Actualitzacions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-actualitzacions-de-seguretat" class="md-nav__link">
+    1. Actualitzacions de Seguretat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-actualitzacions-de-programari" class="md-nav__link">
+    2. Actualitzacions de Programari
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-correccions-derrors" class="md-nav__link">
+    3. Correccions d'Errors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-millores-de-rendiment" class="md-nav__link">
+    4. Millores de Rendiment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipus-de-servidors-dactualitzacio" class="md-nav__link">
+    Tipus de Servidors d'Actualització
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#com-funciona-el-proces-dactualitzacio" class="md-nav__link">
+    Com Funciona el Procés d'Actualització?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beneficis-dels-servidors-dactualitzacions" class="md-nav__link">
+    Beneficis dels Servidors d'Actualitzacions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoratge_Logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoratge i Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Auditoria_Seguretat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auditoria de Seguretat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copies_Seguretat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Automatizacio_Tasques/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatització de Tasques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quotes_usuaris_grups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes per Usuaris i Grups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Windows
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Copies_Seguretat_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat Automatitzades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Quotes_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes de Disc per Usuaris
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Raid_5_windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAID 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#funcio-dels-servidors-dactualitzacions" class="md-nav__link">
+    Funció dels Servidors d'Actualitzacions
+  </a>
+  
+    <nav class="md-nav" aria-label="Funció dels Servidors d'Actualitzacions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-actualitzacions-de-seguretat" class="md-nav__link">
+    1. Actualitzacions de Seguretat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-actualitzacions-de-programari" class="md-nav__link">
+    2. Actualitzacions de Programari
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-correccions-derrors" class="md-nav__link">
+    3. Correccions d'Errors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-millores-de-rendiment" class="md-nav__link">
+    4. Millores de Rendiment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipus-de-servidors-dactualitzacio" class="md-nav__link">
+    Tipus de Servidors d'Actualització
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#com-funciona-el-proces-dactualitzacio" class="md-nav__link">
+    Com Funciona el Procés d'Actualització?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beneficis-dels-servidors-dactualitzacions" class="md-nav__link">
+    Beneficis dels Servidors d'Actualitzacions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="servidors-dactualitzacions">Servidors d'Actualitzacions</h1>
+<p>Els <strong>servidors d'actualitzacions</strong> són servidors remots utilitzats per descarregar actualitzacions de programari, seguretat o altres dades necessàries per mantenir el bon funcionament i la seguretat dels sistemes. Aquests servidors permeten mantenir el programari actualitzat, protegir-lo contra vulnerabilitats i millorar la seva funcionalitat.</p>
+<p>Els servidors d'actualització no només s'utilitzen en sistemes operatius com Ubuntu, sinó que són una part fonamental en una gran varietat de dispositius i serveis.</p>
+<h2 id="funcio-dels-servidors-dactualitzacions">Funció dels Servidors d'Actualitzacions</h2>
+<h3 id="1-actualitzacions-de-seguretat">1. <strong>Actualitzacions de Seguretat</strong></h3>
+<ul>
+<li>Els sistemes operatius i aplicacions poden presentar vulnerabilitats de seguretat amb el temps.</li>
+<li>Els servidors d'actualitzacions ofereixen <strong>parches de seguretat</strong> per corregir aquestes vulnerabilitats i protegir el sistema de possibles atacs externs.</li>
+<li>Aquest tipus d'actualitzacions són essencials per mantenir la seguretat del sistema i evitar riscos com virus, malware o altres amenaces.</li>
+</ul>
+<h3 id="2-actualitzacions-de-programari">2. <strong>Actualitzacions de Programari</strong></h3>
+<ul>
+<li>Els servidors d'actualitzacions ofereixen noves versions d'aplicacions o eines que ja estan instal·lades al sistema.</li>
+<li>Aquestes actualitzacions poden incloure noves funcionalitats, millores d'ús o compatibilitat, així com afegir suport per noves tecnologies.</li>
+<li>També poden corregir errors o millorar la compatibilitat amb altres components del sistema.</li>
+</ul>
+<h3 id="3-correccions-derrors">3. <strong>Correccions d'Errors</strong></h3>
+<ul>
+<li>Els desenvolupadors llançan <strong>actualitzacions</strong> que poden corregir mal funcionament de programari o <strong>bugs</strong> detectats en versions anteriors.</li>
+<li>Aquestes correccions permeten que el programari funcioni de manera més eficaç i sense errors que podrien afectar l'experiència de l'usuari o la seguretat.</li>
+</ul>
+<h3 id="4-millores-de-rendiment">4. <strong>Millores de Rendiment</strong></h3>
+<ul>
+<li>Els servidors d'actualitzacions no només es centren en solucionar problemes, sinó que també poden incloure <strong>optimitzacions de rendiment</strong>.</li>
+<li>Aquests canvis poden ajudar a que el sistema o les aplicacions funcionin més ràpidament i eficientment, millorant l'ús de recursos com la memòria o la CPU.</li>
+</ul>
+<h2 id="tipus-de-servidors-dactualitzacio">Tipus de Servidors d'Actualització</h2>
+<p>Els servidors d'actualització poden estar distribuïts de diferents maneres:</p>
+<ul>
+<li><strong>Servidors Públics</strong>: Són accessibles per qualsevol usuari o organització, com els servidors d'actualització de sistemes operatius (per exemple, servidors de <strong>Ubuntu</strong> o <strong>Windows Update</strong>).</li>
+<li><strong>Servidors Privats</strong>: Utilitzats per organitzacions o empreses que volen controlar les actualitzacions de programari dins de la seva infraestructura interna.</li>
+<li><strong>Servidors Locals</strong>: En algunes xarxes, es poden configurar servidors locals que descarreguen actualitzacions d'un servidor central i les distribueixen als dispositius interns per millorar la velocitat i l'eficiència de la descàrrega.</li>
+</ul>
+<h2 id="com-funciona-el-proces-dactualitzacio">Com Funciona el Procés d'Actualització?</h2>
+<ol>
+<li><strong>Verificació d'Actualitzacions</strong>: El sistema o aplicació verifica regularment la disponibilitat d'actualitzacions al servidor d'actualitzacions.</li>
+<li><strong>Descarrega les Actualitzacions</strong>: Quan es detecta que hi ha noves actualitzacions disponibles, el sistema les descarrega del servidor.</li>
+<li><strong>Instal·lació de les Actualitzacions</strong>: Un cop descarregades, les actualitzacions es poden instal·lar automàticament o requerir que l'usuari les instal·li manualment.</li>
+<li><strong>Reinici o Finalització</strong>: Algunes actualitzacions poden requerir un reinici del sistema o aplicació per completar la instal·lació i assegurar que els canvis tinguin efecte.</li>
+</ol>
+<h2 id="beneficis-dels-servidors-dactualitzacions">Beneficis dels Servidors d'Actualitzacions</h2>
+<ul>
+<li><strong>Seguretat Millorada</strong>: Les actualitzacions de seguretat són crucials per mantenir el sistema protegit.</li>
+<li><strong>Estabilitat</strong>: Les actualitzacions que corregeixen errors milloren l'estabilitat i el rendiment del sistema.</li>
+<li><strong>Noves Funcionalitats</strong>: Permeten que el programari s'actualitzi amb noves funcionalitats que milloren l'experiència de l'usuari.</li>
+<li><strong>Optimització</strong>: Milloren l'eficiència general del sistema, com la gestió de memòria o el consum de recursos.</li>
+</ul>
+<h1 id="documentacio-installacio-desatesa">Documentació Instal·lació desatesa.</h1>
+<h2 id="servidor">Servidor</h2>
+<p>En aquest apàrta procedirem a l'instalacio d'un servidor amb servei d'actualitzacions centralitzat. El primer pas de tot sera actualitzar la llista de paquets amb un apt update i a continuació instal·larem l'Apache2 servidor Web.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_640.png" /></p>
+<p>Conjuntament instal·larem l'eina apt-mirror, aquesta eina ens permet descarregar de forma local els repositoris Apt, es a dir ens serveix per actualitzar i descarregar paquets, de manera local envers d'accedir a la xarxa.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_641.png" /></p>
+<p>Aqui realitzarem un sudo nano del fitxer /etc/apt/mirror.list on haurem de afegir la linia penultima per establir el repositori al seveir mirror. Guardem i sortim.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_642.png" /></p>
+<p>Despres realitzarem aquesta comanda per descarregar els paquets que hem definit anteriorment.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_643.png" /></p>
+<p>I obtindrem un resultat com aquest.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_644.png" /></p>
+<p>Per ultim executem aquesta comanda per afegir un enllaç simbòlic del paquet de chrome al seguent directori del servidor Apache2
+<img alt="Captura" src="../../custom/Selecci%C3%B3_645.png" /></p>
+<h2 id="client">Client</h2>
+<p>En aquest apartat realitzarem la configuracio del client per poder realitzar la baixada de repositoris de forma local, a continuació executem aquesta comanda que ens permetra baixar la signatura publica des de google amb un apt-key permeten la verificacio sobre la correctesa dels paquets sobre els quals descarregarem.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_646.png" /></p>
+<p>Despres realitzarem un nano i editarem el fitxer /etc/apt/sources.list per establir la ruta del nostre servidor.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_647.png" /></p>
+<p>Realitzarem un apt update i automaticament podrem comprovar que la primera font dels repositoris la busca directament al nostre servidor.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_648.png" /></p>
+<p>Finalment instal·lem el paquet en concret google-chrome desde forma local es a dir desde el nostre servidor.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_649.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      mkdocs &copy by Josep Pellisa
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>

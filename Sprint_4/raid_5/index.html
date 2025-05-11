@@ -1,0 +1,987 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../raid_teoria/">
+      
+      
+        <link rel="next" href="../../Sprint_5/Servidor_Actualitzacions/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Raid 5 - 0369-IMPLANTACIÓ DE SISTEMES OPERATIUS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-configuracio-de-raid-5-a-ubuntu" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-header__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Raid 5
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-nav__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raid_teoria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raids
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Raid 5
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Raid 5
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-previs" class="md-nav__link">
+    Requisits previs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-1-installacio-de-mdadm" class="md-nav__link">
+    Pas 1: Instal·lació de mdadm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-2-identificacio-dels-discs" class="md-nav__link">
+    Pas 2: Identificació dels discs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-3-creacio-de-particions-als-discs" class="md-nav__link">
+    Pas 3: Creació de particions als discs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-4-creacio-del-raid-5" class="md-nav__link">
+    Pas 4: Creació del RAID 5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-5-proves-del-raid-5" class="md-nav__link">
+    Pas 5:  Proves del RAID 5
+  </a>
+  
+    <nav class="md-nav" aria-label="Pas 5: Proves del RAID 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificacio-de-lestat-del-raid-despres-duna-fallada" class="md-nav__link">
+    Verificació de l'estat del RAID després d'una fallada
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estat-del-raid-5-amb-4-discs" class="md-nav__link">
+    Estat del RAID 5 amb 4 discs.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 5 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 5 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_5/Servidor_Actualitzacions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Servidor d'Actualitzacions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_5/Monitoratge_Logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoratge i Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_5/Auditoria_Seguretat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auditoria de Seguretat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_5/Copies_Seguretat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_5/Automatizacio_Tasques/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatització de Tasques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_5/Quotes_usuaris_grups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes per Usuaris i Grups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Windows
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Copies_Seguretat_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat Automatitzades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Quotes_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes de Disc per Usuaris
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Raid_5_windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAID 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-previs" class="md-nav__link">
+    Requisits previs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-1-installacio-de-mdadm" class="md-nav__link">
+    Pas 1: Instal·lació de mdadm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-2-identificacio-dels-discs" class="md-nav__link">
+    Pas 2: Identificació dels discs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-3-creacio-de-particions-als-discs" class="md-nav__link">
+    Pas 3: Creació de particions als discs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-4-creacio-del-raid-5" class="md-nav__link">
+    Pas 4: Creació del RAID 5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pas-5-proves-del-raid-5" class="md-nav__link">
+    Pas 5:  Proves del RAID 5
+  </a>
+  
+    <nav class="md-nav" aria-label="Pas 5: Proves del RAID 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificacio-de-lestat-del-raid-despres-duna-fallada" class="md-nav__link">
+    Verificació de l'estat del RAID després d'una fallada
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estat-del-raid-5-amb-4-discs" class="md-nav__link">
+    Estat del RAID 5 amb 4 discs.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="tutorial-configuracio-de-raid-5-a-ubuntu">Tutorial: Configuració de RAID 5 a Ubuntu</h1>
+<p>Aquest tutorial t'orientarà pels passos necessaris per configurar un RAID 5 en un sistema Ubuntu utilitzant <code>mdadm</code>. El RAID 5 és un nivell de RAID que ofereix redundància i millora el rendiment distribuint les dades i la paritat entre múltiples discs.</p>
+<h2 id="requisits-previs">Requisits previs</h2>
+<ul>
+<li>Un sistema Ubuntu instal·lat.</li>
+<li>Accés de root o permisos de superusuari.</li>
+<li>Almenys 3 discs addicionals per configurar el RAID 5.</li>
+</ul>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_001.png" /></p>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_002.png" /></p>
+<h2 id="pas-1-installacio-de-mdadm">Pas 1: Instal·lació de <code>mdadm</code></h2>
+<p>Primer, assegura't que <code>mdadm</code> estigui instal·lat al teu sistema. <code>mdadm</code> és una eina per gestionar dispositius RAID a Linux.</p>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_003.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_004.png" /></p>
+<h2 id="pas-2-identificacio-dels-discs">Pas 2: Identificació dels discs</h2>
+<p>Abans de configurar el RAID 5, és necessari identificar els discs que utilitzarem. Pots fer-ho amb el comandament <code>lsblk</code>, que mostra tots els discs i particions del sistema.</p>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_005.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_006.png" /></p>
+<p>Aquest captura mostra la mateixa comanda pero retallan els discs que volem mostrar.</p>
+<h2 id="pas-3-creacio-de-particions-als-discs">Pas 3: Creació de particions als discs</h2>
+<p>Un cop identificats els discs que utilitzarem per al RAID 5, hem de crear particions en cadascun d'ells. Això es fa amb l'eina <code>fdisk</code>.</p>
+<ol>
+<li>
+<p>Obre <code>fdisk</code> per al disc que vols particionar. Per exemple, per al disc <code>sdb</code>:</p>
+</li>
+<li>
+<p><strong>Prem <code>g</code></strong> per crear una nova taula de particions GPT.</p>
+</li>
+<li>
+<p>Això inicialitza el disc amb una taula de particions GPT, que és necessària per a discs grans o sistemes moderns.</p>
+</li>
+<li>
+<p><strong>Prem <code>n</code></strong> per crear una nova partició.</p>
+</li>
+<li>
+<p>Això iniciarà el procés de creació d'una nova partició.</p>
+</li>
+<li>
+<p><strong>Selecciona el número de partició</strong> (per defecte 1).</p>
+</li>
+<li>
+<p>Pots acceptar el valor per defecte (1) prement <code>Enter</code>.</p>
+</li>
+<li>
+<p><strong>Defineix el sector inicial</strong> (per defecte 2048).</p>
+</li>
+<li>
+<p>Accepta el valor per defecte prement <code>Enter</code>.</p>
+</li>
+<li>
+<p><strong>Defineix el sector final</strong> (per defecte el final del disc).</p>
+</li>
+<li>
+<p>Pots acceptar el valor per defecte prement <code>Enter</code> per utilitzar tot l'espai disponible.</p>
+</li>
+<li>
+<p><strong>Prem <code>w</code></strong> per desar els canvis i sortir.</p>
+</li>
+<li>Això escriu els canvis a la taula de particions i surt de <code>fdisk</code>.</li>
+</ol>
+<p>Entrem al disc sdb i el particionem, amb l'eina fdisk esmentada anteriorment.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_007.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_008.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_009.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_010.png" />
+Finalment comprovem que tenim correctament creada la particio amb lsblk.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_011.png" /></p>
+<p>Realitzem el mateix per a el disc sdc.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_012.png" /></p>
+<p>I comprovem amb l'eina anterior
+<img alt="Captura" src="../../custom/Selecci%C3%B3_013.png" /></p>
+<p>Aqui realitzarem el mateix per a sdd
+<img alt="Captura" src="../../custom/Selecci%C3%B3_014.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_015.png" /></p>
+<p>I comprovem, que ja tenim tots els discos particionats.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_016.png" /></p>
+<h2 id="pas-4-creacio-del-raid-5">Pas 4: Creació del RAID 5</h2>
+<p>Un cop creades les particions als discs, pots crear el RAID 5 utilitzant l'eina <code>mdadm</code>. Aquest pas combina les particions dels discs per crear un únic dispositiu RAID 5.</p>
+<ol>
+<li>
+<p>Executa el següent comandament per crear el RAID 5:</p>
+</li>
+<li>
+<p><strong><code>/dev/md0</code></strong>: És el nom del dispositiu RAID que es crearà. Aquest serà el punt de muntatge del RAID 5.</p>
+</li>
+<li>
+<p><strong><code>--level=5</code></strong>: Defineix el nivell de RAID com a RAID 5. RAID 5 ofereix redundància i millora el rendiment distribuint les dades i la paritat entre múltiples discs.</p>
+</li>
+<li>
+<p><strong><code>--raid-devices=3</code></strong>: Indica el nombre de discs que s'utilitzaran en el RAID. En aquest cas, s'utilitzen 3 discs.</p>
+</li>
+<li>
+<p><strong><code>/dev/sdb1 /dev/sdc1 /dev/sdd1</code></strong>: Són les particions que s'utilitzaran per crear el RAID. Aquestes particions han de ser creades prèviament en els discs <code>sdb</code>, <code>sdc</code> i <code>sdd</code>.</p>
+</li>
+</ol>
+<p>En aquesta captura monitoritzarem el RAID amb la comanda watch mdadm --detail.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_017.png" /></p>
+<p>En aquest cas no ens mostra res ja que esta escoltant i encara no hem realitzat cap comanda.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_018.png" /></p>
+<p>Aqui crearem ja el RAID amb els parametres esmentats anteriorment, seleccionan els 3 discs amb un nivell de RAID5.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_019.png" /></p>
+<p>Com podem observar ja s'ens mostra per surtida els resultats dels raids i podem observar que ens diu que esta operatiu i amb els 3 disc que habiem seleccionat i amb el nom md0.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_020.png" /></p>
+<p>Aqui realitzem un detail --scan per poder visualitzar el raid amb el seu uuid.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_021.png" /></p>
+<p>Ho actualitzem al boot d'arranc per a que ho reconegui.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_022.png" /></p>
+<p>I tornem a mostrar la comanda lsblk amb la qual cosa ja podem comprovar que tenim el Raid creat.</p>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_023.png" /></p>
+<p>Aqui l'hi establirem el sistema de fitxers ext4.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_024.png" /></p>
+<p>I crearem la carpeta amb permisos totals que l'hi muntarem al Raid.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_025.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_026.png" /></p>
+<p>Aqui tornem a comprovar que tinguem el Raid operatiu.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_027.png" /></p>
+<p>Amb els 3 discos OK.</p>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_028.png" /></p>
+<p>Aqui montarem el Raid a la carpeta que hem creat anteriorment.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_029.png" /></p>
+<p>I en aquest pas actualitzarem el fitxer Fstab per mantindre el Raid amb la seva carpeta al reiniciar equip.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_030.png" /></p>
+<p>Ho podem realitzar tant modificant el fitxer com realitzant directament aquesta comanda.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_031.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_032.png" />
+Guardem i surtim.</p>
+<h2 id="pas-5-proves-del-raid-5">Pas 5:  Proves del RAID 5</h2>
+<h3 id="verificacio-de-lestat-del-raid-despres-duna-fallada">Verificació de l'estat del RAID després d'una fallada</h3>
+<p>Es crea un fitxer de prova al RAID 5 per verificar el seu funcionament:
+<img alt="Captura" src="../../custom/Selecci%C3%B3_033.png" /></p>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_034.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_035.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_036.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_037.png" /></p>
+<p>Es simula un fallada en un dels discs del RAID:
+<img alt="Captura" src="../../custom/Selecci%C3%B3_038.png" /></p>
+<p>Es comprova l'estat del RAID després de marcar el disc com a fallat:
+Podem observar que tenim el raid degradad.</p>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_039.png" /></p>
+<p>Aqui ens mostra com el disc sdd el tenim eliminat del raid automaticament
+<img alt="Captura" src="../../custom/Selecci%C3%B3_040.png" /></p>
+<p>Pero comprovem que igual seguim conservant les dades ja que hi ha paratitat entre els disc i es reparteixen l'informació
+<img alt="Captura" src="../../custom/Selecci%C3%B3_041.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_042.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_043.png" /></p>
+<p>Procedirem a l'extraccio del disc pero automaticament cuan ens falla ja el retira del RAID.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_044.png" /></p>
+<p>Podem observar com tenim nomes 2 devices
+<img alt="Captura" src="../../custom/Selecci%C3%B3_045.png" /></p>
+<p>I el sdd ens surt eliminat.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_046.png" /></p>
+<p>I aqui podem observar com no te cap particio de RAID
+<img alt="Captura" src="../../custom/Selecci%C3%B3_047.png" /></p>
+<p>Aqui afegirem un nou disc per substituir el sdd.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_049.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_050.png" /></p>
+<p>Aqui podem observar que ja el tenim instalat ara ens falta realitzar el mateix proces que hem realitzat al principi de la creació del RAID
+<img alt="Captura" src="../../custom/Selecci%C3%B3_051.png" /></p>
+<p>El particionem amb fdisk i ho comprovem
+<img alt="Captura" src="../../custom/Selecci%C3%B3_052.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_053.png" /></p>
+<p>Aqui l'afegim al RAID que teniem creat
+<img alt="Captura" src="../../custom/Selecci%C3%B3_054.png" /></p>
+<p>I autonmaticament veiem que ja l'incorpora al RAID.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_055.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_056.png" /></p>
+<h3 id="estat-del-raid-5-amb-4-discs">Estat del RAID 5 amb 4 discs.</h3>
+<p>Afegirem els 4 disc que sera el antic que teniem abans en aquest cas el sdd
+<img alt="Captura" src="../../custom/Selecci%C3%B3_057.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_058.png" /></p>
+<p>I com podem comprovar s'afegeix automaticament pero resta a l'espera es a dir fins que un disc no falle no es posara en actiu ja que esta de reserva.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_059.png" /></p>
+<p>Aqui en aquest cas traurem el disc 1 sdb i veurem com automaticament el disc 4 es posara en actiu.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_060.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_061.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_063.png" /></p>
+<p>En aquest apartat pararem el RAID i actualitzarem els canvis del RAID per a que torni estar operatiu.</p>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_064.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_065.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_066.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_067.png" /></p>
+<p>I seguim mantenin les dades.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_068.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      mkdocs &copy by Josep Pellisa
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,894 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Copies_Seguretat/">
+      
+      
+        <link rel="next" href="../Quotes_usuaris_grups/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Automatització de Tasques - 0369-IMPLANTACIÓ DE SISTEMES OPERATIUS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#automatitzacio-de-tasques-amb-cron-i-anacron-a-linux" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-header__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Automatització de Tasques
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-nav__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4/raid_teoria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raids
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4/raid_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raid 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 5 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 5 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Servidor_Actualitzacions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Servidor d'Actualitzacions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoratge_Logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoratge i Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Auditoria_Seguretat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auditoria de Seguretat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copies_Seguretat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Automatització de Tasques
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Automatització de Tasques
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-automatitzacio-de-tasques-a-linux" class="md-nav__link">
+    1. Automatització de Tasques a Linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cron-el-planificador-de-tasques-classic" class="md-nav__link">
+    2. Cron: El Planificador de Tasques Clàssic
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Cron: El Planificador de Tasques Clàssic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristiques-principals" class="md-nav__link">
+    Característiques principals
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-anacron-cron-per-a-sistemes-no-continus" class="md-nav__link">
+    3. Anacron: Cron per a Sistemes No Continus
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Anacron: Cron per a Sistemes No Continus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-concepte-basic" class="md-nav__link">
+    3.1. Concepte Bàsic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-principals-diferencies-amb-cron" class="md-nav__link">
+    3.2. Principals Diferències amb Cron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-com-funciona-anacron" class="md-nav__link">
+    3.3. Com Funciona Anacron?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quotes_usuaris_grups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes per Usuaris i Grups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Windows
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Copies_Seguretat_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat Automatitzades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Quotes_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes de Disc per Usuaris
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Raid_5_windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAID 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-automatitzacio-de-tasques-a-linux" class="md-nav__link">
+    1. Automatització de Tasques a Linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cron-el-planificador-de-tasques-classic" class="md-nav__link">
+    2. Cron: El Planificador de Tasques Clàssic
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Cron: El Planificador de Tasques Clàssic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristiques-principals" class="md-nav__link">
+    Característiques principals
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-anacron-cron-per-a-sistemes-no-continus" class="md-nav__link">
+    3. Anacron: Cron per a Sistemes No Continus
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Anacron: Cron per a Sistemes No Continus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-concepte-basic" class="md-nav__link">
+    3.1. Concepte Bàsic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-principals-diferencies-amb-cron" class="md-nav__link">
+    3.2. Principals Diferències amb Cron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-com-funciona-anacron" class="md-nav__link">
+    3.3. Com Funciona Anacron?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="automatitzacio-de-tasques-amb-cron-i-anacron-a-linux">Automatització de Tasques amb Cron i Anacron a Linux</h1>
+<h2 id="1-automatitzacio-de-tasques-a-linux">1. Automatització de Tasques a Linux</h2>
+<p>En entorns Linux, l'automatització de tasques és essencial per executar processos de manera programada sense intervenció manual. Això permet:
+- <strong>Estalviar temps</strong> en tasques repetitives
+- <strong>Millorar l'eficiència</strong> del sistema amb tasques en segon pla
+- <strong>Garantir l'execució puntual</strong> de processos crítics (com còpies de seguretat, actualitzacions o neteja del sistema)</p>
+<p>Els dos sistemes principals per a l'automatització són:
+- <strong>Cron</strong>: Ideal per a sistemes que estan sempre engegats (servidors)
+- <strong>Anacron</strong>: Dissenyat per a sistemes que no funcionen contínuament (ordinadors personals o portàtils)</p>
+<hr />
+<h2 id="2-cron-el-planificador-de-tasques-classic">2. Cron: El Planificador de Tasques Clàssic</h2>
+<p>Cron és un dimoni (<em>daemon</em>) que executa tasques en horaris específics basats en una configuració anomenada <strong>crontab</strong>.</p>
+<h3 id="caracteristiques-principals">Característiques principals</h3>
+<p>✔ <strong>Execució exacta en temps real</strong>: Si el sistema està apagat, la tasca <strong>no s'executa</strong><br />
+✔ <strong>Configuració per usuari</strong>: Cada usuari pot tenir el seu propi crontab<br />
+✔ <strong>Precisió en minuts</strong>: Permet programar tasques amb intervals molt específics  </p>
+<h2 id="3-anacron-cron-per-a-sistemes-no-continus">3. Anacron: Cron per a Sistemes No Continus</h2>
+<h3 id="31-concepte-basic">3.1. Concepte Bàsic</h3>
+<p>Anacron és un servei d'automatització dissenyat específicament per a sistemes que no estan engegats contínuament, com:
+- Ordinadors personals
+- Portàtils
+- Estacions de treball d'ús intermitent</p>
+<h3 id="32-principals-diferencies-amb-cron">3.2. Principals Diferències amb Cron</h3>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Anacron</th>
+<th>Cron</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dependència temporal</strong></td>
+<td>No requereix hora exacta</td>
+<td>Execució a hora precisa</td>
+</tr>
+<tr>
+<td><strong>Tolerància a apagats</strong></td>
+<td>Executa tasques pendents</td>
+<td>Salta tasques no executades</td>
+</tr>
+<tr>
+<td><strong>Unitats temporals</strong></td>
+<td>Treballa amb dies</td>
+<td>Treballa amb minuts/hores/dies</td>
+</tr>
+<tr>
+<td><strong>Entorn ideal</strong></td>
+<td>Sistemes no permanents</td>
+<td>Servidors 24/7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-com-funciona-anacron">3.3. Com Funciona Anacron?</h3>
+<ol>
+<li><strong>Mecanisme d'execució</strong>:</li>
+<li>Verifica les tasques pendents en l'inici del sistema</li>
+<li>Compara les dates dels darrers execucions</li>
+<li>
+<p>Executa les tasques que hagin superat el període definit</p>
+</li>
+<li>
+<p><strong>Gestió de retards</strong>:</p>
+</li>
+<li>Introdueix un retard aleatori per evitar càrregues simultànies</li>
+<li>Configurable per cada tasca</li>
+</ol>
+<h1 id="configuracions">Configuracions</h1>
+<p>Per aquest exemple, crearem dos fitxers dins del directori /home/Imágenes per verificar que l'script funciona correctament.</p>
+<p>Aqui crearem un script per automatitzar còpies de seguretat. S'hi pot veure la creació d'un arxiu comprimit amb tar que inclou la data i hora al nom del fitxer, indicant una tasca programada per preservar dades del directori d'imatges. La imatge reflecteix una fase inicial de configuració, on s'està provant la generació de backups des de la línia de comandes
+<img alt="Captura" src="../../custom/Selecci%C3%B3_762.png" /></p>
+<p>Assignem permisos d'execució al script amb la comanda chmod +x.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_763.png" /></p>
+<p>Aqui l'executem.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_764.png" /></p>
+<h2 id="automatitzacio-del-script-amb-crontab">Automatització del Script amb crontab</h2>
+<p>Editem el fitxer /etc/crontab i afegim la linia de baix de tot. La captura mostra l'edició del fitxer de configuració /etc/crontab utilitzant l'editor GNU nano, on es defineixen tasques programades a nivell de sistema en entorns Linux. S'hi visualitzen les estructures bàsiques per configurar cron-jobs, incloent els camps per minuts, hores, dies i mesos, juntament amb exemples de tasques automatitzades predefinides. Es destaquen les entrades per executar scripts periòdics (diaris, setmanals i mensuals) mitjançant els directoris cron.daily, cron.weekly i cron.monthly.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_765.png" /></p>
+<p>Finalment, esperem uns minuts i podem observar que s'ha realitzat la copia dels arxius.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_767.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_768.png" /></p>
+<h2 id="automatitzacio-del-script-amb-anacron">Automatització del Script amb Anacron</h2>
+<p>Aqui mourem el script al directori cron.daily i el copiarem.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_769.png" /></p>
+<p>Entrem al fitxer Cron.daily i eliminem tot el contingut.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_770.png" /></p>
+<p>Ara editarem el fitxer /etc/anacrontab i modificarem el valor 1 per a que s'executi despres d'iniciar l'equip.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_771.png" /></p>
+<p>Amb això, Anacron s'encarregarà d'executar l'script diàriament quan l'ordinador estigui en funcionament.
+Reiniciem l'ordinador, esperem un minut i verifiquem que el procés s'ha executat correctament.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_772.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      mkdocs &copy by Josep Pellisa
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>

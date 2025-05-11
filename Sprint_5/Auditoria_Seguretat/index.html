@@ -1,0 +1,838 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Monitoratge_Logs/">
+      
+      
+        <link rel="next" href="../Copies_Seguretat/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Auditoria de Seguretat - 0369-IMPLANTACIÓ DE SISTEMES OPERATIUS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccio-a-lynis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-header__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Auditoria de Seguretat
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-nav__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4/raid_teoria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raids
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4/raid_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raid 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 5 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 5 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Servidor_Actualitzacions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Servidor d'Actualitzacions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoratge_Logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoratge i Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Auditoria de Seguretat
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Auditoria de Seguretat
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-a-lynis" class="md-nav__link">
+    Introducció a Lynis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-el-hardening-index" class="md-nav__link">
+    Què és el Hardening Index?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-que-volem-pujar-el-hardening-index" class="md-nav__link">
+    Per què volem pujar el Hardening Index?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-lynis" class="md-nav__link">
+    Instal·lació Lynis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementacio-de-seguretat" class="md-nav__link">
+    Implementació de Seguretat
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copies_Seguretat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Automatizacio_Tasques/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatització de Tasques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quotes_usuaris_grups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes per Usuaris i Grups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Windows
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Copies_Seguretat_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat Automatitzades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Quotes_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes de Disc per Usuaris
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Raid_5_windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAID 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-a-lynis" class="md-nav__link">
+    Introducció a Lynis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-el-hardening-index" class="md-nav__link">
+    Què és el Hardening Index?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-que-volem-pujar-el-hardening-index" class="md-nav__link">
+    Per què volem pujar el Hardening Index?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-lynis" class="md-nav__link">
+    Instal·lació Lynis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementacio-de-seguretat" class="md-nav__link">
+    Implementació de Seguretat
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Auditoria de Seguretat</h1>
+
+<h2 id="introduccio-a-lynis">Introducció a Lynis</h2>
+<p><strong>Lynis</strong> és una eina de seguretat de codi obert dissenyada per realitzar audits de seguretat en sistemes Linux i Unix. Aquesta eina escaneja el sistema en cerca de vulnerabilitats, configuracions inadequades i possibles millores en termes de seguretat. És una eina molt utilitzada per administradors de sistemes i professionals de ciberseguretat per assegurar-se que els seus entorns estan ben configurats i protegits.</p>
+<p>Lynis funciona de manera autònoma i proporciona un informe detallat amb recomanacions per millorar la seguretat del sistema. A més, calcula un índex anomenat <strong>Hardening Index</strong>, que mesura el nivell de seguretat del sistema.</p>
+<hr />
+<h2 id="que-es-el-hardening-index">Què és el Hardening Index?</h2>
+<p>El <strong>Hardening Index</strong> (Índex de Enduriment) és una puntuació que Lynis assigna després de realitzar una auditoria. Aquest índex reflecteix el grau de seguretat del sistema en base a les configuracions i pràctiques de seguretat implementades. Com més alt sigui l'índex, més fort i segur serà el sistema.</p>
+<p>El Hardening Index es calcula tenint en compte factors com:</p>
+<ul>
+<li>Configuracions de xarxa segures.</li>
+<li>Polítiques de contrasenyes.</li>
+<li>Actualitzacions del sistema.</li>
+<li>Configuracions de permisos i accessos.</li>
+<li>Ús de eines de seguretat com firewalls o antivirus.</li>
+</ul>
+<hr />
+<h2 id="per-que-volem-pujar-el-hardening-index">Per què volem pujar el Hardening Index?</h2>
+<p>Pujar el Hardening Index és important per garantir que el sistema està ben protegit contra amenaces externes i internes. Algunes raons per millorar aquest índex són:</p>
+<ol>
+<li><strong>Reduir el risc d'atacs</strong>: Un sistema amb un alt nivell de hardening és menys vulnerable a atacs de malware, exploits o intrusos.</li>
+<li><strong>Complir amb normatives</strong>: Moltes organitzacions necessiten complir amb estàndards de seguretat com GDPR, HIPAA o ISO 27001, i un bon Hardening Index ajuda a assolir aquests requisits.</li>
+<li><strong>Millorar la confiança</strong>: Un sistema segur inspira confiança en els usuaris i clients.</li>
+<li><strong>Prevenir pèrdues de dades</strong>: Un sistema ben configurat redueix el risc de pèrdua o robatori de dades sensibles.</li>
+</ol>
+<hr />
+<h2 id="installacio-lynis">Instal·lació Lynis</h2>
+<p>En aquest apartat procedirem a l'instal·lació de Lynis per realtizar una auditoria de seguretat del sistema on la qual detallarem cada pas.</p>
+<p>Aqui insta·lem l'eina d'auditories Lynis.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_700.png" /></p>
+<p>Un cop el tenim descarregat, procedim a executar l'auditoria amb la comanda sudo lynis audit system, i veurem com s'inicialitza el programa.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_701.png" /></p>
+<p>Podem veure Lynis ha detectat un sistema Ubuntu 22.04 amb kernel 6.8.0 en maquinari x86_64, completant les comprovacions de perfils i sistema operatiu, però el programa no està actualitzat ("SIN ACTUALIZACION"). S'han utilitzat perfils per defecte i generat fitxers de registre i informe a /var/log/lynts.log i /var/log/lynts-report.dat.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_702.png" /></p>
+<p>Aqui ha escanejat les eines del sistema i binaris necessaris per a les proves de Debian, comprovant directoris com /bin, /sbin, i /usr/bin. S'han detectat alguns paquets no instal·lats com apt-listbugs, apt-listchanges, needrestart, i fail2ban, que podrien millorar la seguretat del sistema. A més, s'ha destacat una advertència sobre el temps d'execució prolongat (12.87 segons) en una de les proves (DEB-0001).
+<img alt="Captura" src="../../custom/Selecci%C3%B3_703.png" /></p>
+<p>Aqui podem observar que ha revisat l'entorn d'arrencada i serveis del sistema, detectant que s'utilitza systemd com a gestor de serveis i que l'arrencada UEFI està deshabilitada. S'han trobat 32 serveis en execució i 49 habilitats a l'arrencada, amb alguns marcats com a insegurs o exposats, com avahi-daemon.service, cups.service, i ModemManager.service. A més, s'ha comprovat que GRUB2 no té protecció amb contrasenya, cosa que podria representar un risc per a la seguretat del sistema.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_704.png" /></p>
+<p>Lynis ha revisat el nucli del sistema (kernel), confirmant que s'utilitza el runlevel 5 i que la CPU suporta funcions de seguretat com PAE i Noexecute (NX). S'han detectat 62 mòduls del nucli actius i s'ha comprovat que no hi ha actualitzacions pendents del kernel, però la configuració per defecte dels "core dumps" podria millorar-se.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_705.png" /></p>
+<p>Lynis ha revisat la memòria i processos del sistema, confirmant que no hi ha processos morts o en espera d'E/S, però s'ha detectat que l'eina "prelink" no està instal·lada. En l'àmbit d'usuaris i autenticació, s'han trobat configuracions correctes en fitxers de contrasenyes i grups, però s'ha destacat un perill en els permisos del directori /etc/sudoers.d. A més, s'han descobert suggerències per millorar, com habilitar el rodatge de contrasenyes i revisar la màscara per defecte (umask) a /etc/login.defs.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_706.png" /></p>
+<p>Lynis ha revisat els sistemes de fitxers, destacant suggerències com separar els punts de muntatge de /home, /tmp i /var, així com millorar les opcions de muntatge per a directoris com /dev i /dev/shm. S'ha detectat que el suport per a dispositius USB no està deshabilitat, cosa que podria representar un risc de seguretat, i que no s'ha trobat l'eina USBGuard per gestionar l'accés a dispositius USB. A més, s'ha confirmat que no hi ha serveis NFS en execució, però es recomana revisar la configuració del nucli per a sistemes de fitxers poc segurs.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_707.png" /></p>
+<p>Lynis ha detectat paquets vulnerables (marcats com a perill), tot i que el gestor de paquets dpkg i l'eina de revisions de seguretat estan instal·lats. S'ha comprovat que IPv6 està habilitat amb configuració automàtica, però no s'ha trobat suport per a DNSSEC. A més, s'han identificat ports oberts i s'ha confirmat que no hi ha interfícies en mode promiscu ni protocols de xarxa poc comuns.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_708.png" /></p>
+<p>Lynis ha revisat els tallafocs, detectant que iptables està actiu però amb un conjunt de regles buit (marcat com a perill). No s'han trobat servidors web com Apache o nginx, ni serveis com SSH, SNMP o LDAP en execució. Tampoc s'han identificat motors de bases de dades instal·lats al sistema.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_709.png" /></p>
+<p>Lynis ha revisat el sistema de registres (logging), confirmant que RSyslog i el diari de systemd estan actius, però no s'ha trobat registre remot habilitat. S'han detectat serveis insegurs com clients i servidors rsh, telnet, i NIS, que podrien representar riscos de seguretat. A més, els fitxers de bàners (/etc/issue i /etc/issue.net) tenen continguts dèbils, cosa que podria donar informació sensible a possibles atacants.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_710.png" /></p>
+<p>Lynis ha revisat les tasques programades i la contabilitat del sistema, però no s'han trobat dades de comptabilitat ni l'eina auditd instal·lada. S'ha detectat que el sistema utilitza systemd-timesyncd per a la sincronització de temps, amb la última sincronització fa 262 segons. En l'àmbit de criptografia, no s'han trobat certificats SSL caducats, però s'ha destacat que la configuració de MOR és dèbil, i no s'ha trobat suport per a generadors de nombres aleatoris com rngd.</p>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_711.png" /></p>
+<p>Lynis ha revisat les eines d'integridat de fitxers i malware, però no s'han trobat eines d'aquest tipus instal·lades. S'han detectat suggerències per millorar els permisos de fitxers clau com /etc/crontab, /etc/passwd-, i directoris com /etc/cron.daily. A més, no s'ha identificat cap eina d'automatització o sistemes de detecció d'intrusos (IDS/IPS) al sistema.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_712.png" /></p>
+<p>Lynis ha detectat 2 advertències: paquets vulnerables i mòduls de iptables carregats sense regles actives. S'han proporcionat 41 suggerències, com actualitzar Lynis, instal·lar eines com apt-listbugs, fail2ban, i configurar una contrasenya per a GRUB. També es recomana instal·lar needrestart per reiniciar serveis després d'actualitzacions i millorar la seguretat de PAM amb libpam-tmpdir.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_713.png" /></p>
+<p>Aqui ens diu que ha realitzat un escaneig de seguretat amb un índex de hardening de 59, revisant 248 proves i components com el tallafocs (actiu) i l'escaneig de malware (no instal·lat). L'escaneig es va executar en mode normal, amb mòduls d'auditoria i vulnerabilitats activats. Els fitxers de registre i informe es troben a /var/log/Lynts.log i /var/log/Lynts-report.dat.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_714.png" /></p>
+<hr />
+<h2 id="implementacio-de-seguretat">Implementació de Seguretat</h2>
+<p>En aquestes captures mostrarem com reforçem el sistema per augmentar el Hardening index i aixi fer un sistema mes robust dins del context de la seguretat.</p>
+<p>Aquí procedim a actualitzar la llista de paquets disponibles i instal·lar eines de seguretat com apt-listchanges, needrestart i fail2ban mitjançant les ordres apt update i apt install. Aquestes eines ajuden a gestionar canvis en les actualitzacions, reiniciar serveis necessaris després d'actualitzacions i protegir el sistema contra intents d'accés no autoritzats, respectivament. El sistema està connectat als repositoris oficials d'Ubuntu per obtenir els paquets.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_719.png" />
+<img alt="Captura" src="../../custom/Selecci%C3%B3_720.png" /></p>
+<p>Aquí procedim a instal·lar el paquet apt-listbugs, una eina que mostra una llista de errors crítics abans de realitzar instal·lacions o actualitzacions de paquets. Això ajuda a evitar problemes de seguretat o estabilitat al sistema. La instal·lació s'ha iniciat correctament, llegint la llista de paquets, creant l'arbre de dependències i revisant l'estat dels paquets.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_721.png" /></p>
+<p>Aquí procedim a instal·lar el paquet libpam-tmpdir, que configura directoris temporals segurs per a sessions PAM, millorant la seguretat del sistema. S'ha descarregat i instal·lat correctament, ocupant 52,2 kB d'espai addicional. Aquesta eina és útil per gestionar entorns temporals de manera més segura durant les sessions d'usuari.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_722.png" /></p>
+<p>Aquí procedim a instal·lar els paquets cryptsetup i cryptsetup-bin, que permeten configurar i gestionar el xifrat de discs i particions al sistema. Aquesta instal·lació inclou també cryptsetup-initramfs, necessari per a la integració amb el sistema d'arrencada. S'han descarregat 365 kB de dades i s'utilitzaran 1.246 kB d'espai addicional.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_723.png" /></p>
+<p>S'instal·la el compilador gcc i les seves dependències, necessaris per a desenvolupar i compilar programari en C. La instal·lació descarrega 52,6 MB i ocupa 116 MB d'espai, actualitzant també paquets com libc6. Aquesta eina és clau per a la creació i compilació de programes al sistema.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_724.png" /></p>
+<p>Aquí es mostren serveis que utilitzen biblioteques desactualitzades i que necessiten reiniciar-se. Entre ells hi ha cups, dbus, rsyslog, i systemd-resolved. Es pot seleccionar quins serveis reiniciar per garantir que funcionin amb les versions més recents i segures de les biblioteques.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_725.png" /></p>
+<p>Instal·lem ClamAV, un antivirus de codi obert, juntament amb el seu dimoni per a escaneig en temps real. La instal·lació inclou eines com clamav-freshclam per a actualitzacions de bases de dades. Es descarreguen 1.502 kB i s'utilitzen 5.147 kB d'espai addicional per a protegir el sistema contra malware.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_726.png" /></p>
+<p>Aquí s'executa l'antivirus ClamAV per escanejar de manera recursiva (-r) el directori /home/client, revisant tots els fitxers i subdirectoris en busca de malware o amenaces. Aquesta ordre és útil per assegurar que els fitxers d'un usuari específic estan nets i lliures de virus.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_727.png" /></p>
+<p>L'escaneig amb ClamAV ha revisat 225 directoris i 239 fitxers, sense trobar fitxers infectats. S'han escanejat 6,25 MB de dades amb un temps total de 27 segons. El sistema està net de virus, i l'escaneig va des de les 10:36:34 fins a les 10:37:02 del 15/03/2025.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_729.png" /></p>
+<p>Aquí procedim a instal·lar Squid, un servidor proxy que millora el rendiment i la seguretat de la navegació web. La instal·lació inclou paquets com squid-common i squid-langpack per a funcionalitats addicionals.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_730.png" /></p>
+<p>Mostrem el contingut del fitxer /etc/modprobe.d/blacklist.conf, on es desactiven mòduls del nucli com usb_storage, firewire-core, i altres com snd_pcsp i amd76x_edac. Aquestes entrades ajuden a evitar conflictes i millorar l'estabilitat del sistema.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_731.png" /></p>
+<p>Executem apt update per actualitzar la llista de paquets disponibles i apt upgrade per instal·lar les versions més recents dels paquets al sistema. Aquest procés és clau per mantenir el sistema segur, estable i actualitzat amb les últimes correccions de seguretat i millores.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_735.png" /></p>
+<p>Mostrem el fitxer /etc/fail2ban/jail.local, on s'ha habilitat la protecció de Fail2ban per al servei SSH (enabled = true). Aquesta configuració bloqueja adreces IP després de múltiples intents fallits d'inici de sessió, reforçant la seguretat del servidor contra accés no autoritzat.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_736.png" /></p>
+<p>Aquí s'utilitza l'eina grub-mkpasswd-pbkdf2 per generar un hash de contrasenya per a protegir el gestor d'arrencada GRUB. Això impedeix l'accés no autoritzat a les opcions d'arrencada, com ara l'arrencada en mode monousuari sense contrasenya. Es demana introduir la contrasenya dues vegades per verificar-la i generar el hash corresponent.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_738.png" /></p>
+<p>Aquí es configuren regles bàsiques de iptables per a gestionar el trànsit de xarxa. Primer, es bloqueja tot el trànsit entrant (-P INPUT DROP). Després, es permet l'accés als ports 22 (SSH), 80 (HTTP) i 443 (HTTPS) mitjançant les regles ACCEPT. Això assegura que només es permeti trànsit als serveis essencials, millorant la seguretat del sistema.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_739.png" /></p>
+<p>Finalment, tornem a visualitzar el resum de l'escaneig de seguretat amb Lynis. L'índex de hardening ha augmentat a 69, indicant una millora en la seguretat del sistema. S'han realitzat 263 proves, amb components com el tallafocs i l'escaneig de malware marcats com a actius. L'escaneig es va executar en mode normal, i els fitxers de registre i informe es troben a /var/log/Lynts.log i /var/log/Lynts-report.dat. Aquest resultat mostra un progrés significatiu en l'enduriment del sistema.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_740.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      mkdocs &copy by Josep Pellisa
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>

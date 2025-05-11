@@ -1,0 +1,1077 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Servidor_Actualitzacions/">
+      
+      
+        <link rel="next" href="../Auditoria_Seguretat/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Monitoratge i Logs - 0369-IMPLANTACIÓ DE SISTEMES OPERATIUS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#monitoratge-i-logs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-header__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Monitoratge i Logs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" class="md-nav__button md-logo" aria-label="0369-IMPLANTACIÓ DE SISTEMES OPERATIUS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    0369-IMPLANTACIÓ DE SISTEMES OPERATIUS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4/raid_teoria/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raids
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4/raid_5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raid 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 5 Ubuntu
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 5 Ubuntu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Servidor_Actualitzacions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Servidor d'Actualitzacions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Monitoratge i Logs
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Monitoratge i Logs
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#monitoratge" class="md-nav__link">
+    Monitoratge
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoratge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-el-monitoratge" class="md-nav__link">
+    Què és el Monitoratge?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-a-que-serveix-el-monitoratge" class="md-nav__link">
+    Per a què serveix el Monitoratge?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eines-de-monitoratge" class="md-nav__link">
+    Eines de Monitoratge
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    Logs
+  </a>
+  
+    <nav class="md-nav" aria-label="Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-son-els-logs" class="md-nav__link">
+    Què són els Logs?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-a-que-serveixen-els-logs" class="md-nav__link">
+    Per a què serveixen els Logs?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eines-de-gestio-de-logs" class="md-nav__link">
+    Eines de Gestió de Logs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diferencies-entre-monitoratge-i-logs" class="md-nav__link">
+    Diferències entre Monitoratge i Logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#com-es-complementen-el-monitoratge-i-els-logs" class="md-nav__link">
+    Com es Complementen el Monitoratge i els Logs?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Auditoria_Seguretat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auditoria de Seguretat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Copies_Seguretat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Automatizacio_Tasques/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatització de Tasques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quotes_usuaris_grups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes per Usuaris i Grups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sprint 4 Windows
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Sprint 4 Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Copies_Seguretat_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Còpies de Seguretat Automatitzades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Quotes_Windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotes de Disc per Usuaris
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sprint_4_Windows/Raid_5_windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAID 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#monitoratge" class="md-nav__link">
+    Monitoratge
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoratge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-el-monitoratge" class="md-nav__link">
+    Què és el Monitoratge?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-a-que-serveix-el-monitoratge" class="md-nav__link">
+    Per a què serveix el Monitoratge?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eines-de-monitoratge" class="md-nav__link">
+    Eines de Monitoratge
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    Logs
+  </a>
+  
+    <nav class="md-nav" aria-label="Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-son-els-logs" class="md-nav__link">
+    Què són els Logs?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-a-que-serveixen-els-logs" class="md-nav__link">
+    Per a què serveixen els Logs?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eines-de-gestio-de-logs" class="md-nav__link">
+    Eines de Gestió de Logs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diferencies-entre-monitoratge-i-logs" class="md-nav__link">
+    Diferències entre Monitoratge i Logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#com-es-complementen-el-monitoratge-i-els-logs" class="md-nav__link">
+    Com es Complementen el Monitoratge i els Logs?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="monitoratge-i-logs">Monitoratge i Logs</h1>
+<p>El <strong>monitoratge</strong> i els <strong>logs</strong> són dues eines fonamentals en l'administració de sistemes i xarxes. Ambdues tenen com a objectiu principal garantir el correcte funcionament dels sistemes, però es complementen per a oferir una visió completa de l'estat i el comportament dels sistemes.</p>
+<hr />
+<h2 id="monitoratge"><strong>Monitoratge</strong></h2>
+<h3 id="que-es-el-monitoratge"><strong>Què és el Monitoratge?</strong></h3>
+<p>El monitoratge és el procés de supervisar en temps real l'estat i el rendiment d'un sistema, xarxa o aplicació. Això inclou el seguiment de mètriques com l'ús de CPU, memòria, disc, xarxa, estat dels serveis, i més.</p>
+<h3 id="per-a-que-serveix-el-monitoratge"><strong>Per a què serveix el Monitoratge?</strong></h3>
+<ol>
+<li><strong>Detectar problemes</strong>: Permet identificar errors o anomalies en temps real, com ara pics d'ús de CPU, manca de memòria o caigudes de serveis.</li>
+<li><strong>Optimització de recursos</strong>: Ajuda a entendre com es distribueixen els recursos i on es poden fer millores per a optimitzar el rendiment.</li>
+<li><strong>Prevenció d'incidències</strong>: Amb alertes configurades, es pot actuar abans que un problema menor es converteixi en una fallada crítica.</li>
+<li><strong>Planificació de capacitat</strong>: Permet preveure quan serà necessari ampliar recursos (com memòria o emmagatzematge) per a evitar problemes de rendiment.</li>
+<li><strong>Auditoria i compliment</strong>: En entorns regulats, el monitoratge ajuda a garantir el compliment de normatives i estàndards de seguretat.</li>
+</ol>
+<h3 id="eines-de-monitoratge"><strong>Eines de Monitoratge</strong></h3>
+<ul>
+<li><strong>Nagios</strong>: Supervisa l'estat de servidors, xarxes i aplicacions.</li>
+<li><strong>Prometheus + Grafana</strong>: Recull mètriques i les visualitza en panells gràfics.</li>
+<li><strong>Zabbix</strong>: Eina completa per a monitoratge de xarxes, servidors i aplicacions.</li>
+<li><strong>htop/Glances</strong>: Eines de línia de comandes per a monitorar recursos en temps real.</li>
+</ul>
+<hr />
+<h2 id="logs"><strong>Logs</strong></h2>
+<h3 id="que-son-els-logs"><strong>Què són els Logs?</strong></h3>
+<p>Els logs són registres que capturen esdeveniments i activitats que ocorren en un sistema, aplicació o dispositiu de xarxa. Aquests registres contenen informació detallada sobre accions, errors, advertències i altres esdeveniments rellevants.</p>
+<h3 id="per-a-que-serveixen-els-logs"><strong>Per a què serveixen els Logs?</strong></h3>
+<ol>
+<li><strong>Depuració d'errors</strong>: Els logs permeten als administradors identificar i solucionar problemes en el sistema o aplicacions.</li>
+<li><strong>Auditoria i seguretat</strong>: Els logs registren accions d'usuaris i processos, cosa que és essencial per a detectar activitats sospitoses o no autoritzades.</li>
+<li><strong>Anàlisi de rendiment</strong>: Els logs poden contenir informació sobre el rendiment del sistema, com ara temps de resposta o ús de recursos.</li>
+<li><strong>Compliment normatiu</strong>: En molts sectors, és obligatori mantenir registres detallats de les activitats del sistema per a complir amb regulacions com GDPR, HIPAA, etc.</li>
+<li><strong>Reconstrucció d'esdeveniments</strong>: En cas d'incidències, els logs permeten reconstruir què va passar i quins passos es van seguir.</li>
+</ol>
+<h3 id="eines-de-gestio-de-logs"><strong>Eines de Gestió de Logs</strong></h3>
+<ul>
+<li><strong>rsyslog</strong>: Servei per a gestionar i centralitzar logs en sistemes Linux.</li>
+<li><strong>ELK Stack (Elasticsearch, Logstash, Kibana)</strong>: Eina avançada per a recollir, processar i visualitzar logs.</li>
+<li><strong>journalctl</strong>: Eina per a visualitzar logs en sistemes que utilitzen <code>systemd</code>.</li>
+<li><strong>Splunk</strong>: Eina comercial per a la gestió i anàlisi de logs.</li>
+</ul>
+<hr />
+<h2 id="diferencies-entre-monitoratge-i-logs"><strong>Diferències entre Monitoratge i Logs</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Aspecte</strong></th>
+<th><strong>Monitoratge</strong></th>
+<th><strong>Logs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Objectiu principal</strong></td>
+<td>Supervisar en temps real.</td>
+<td>Registrar esdeveniments passats.</td>
+</tr>
+<tr>
+<td><strong>Temps</strong></td>
+<td>Temps real (o quasi real).</td>
+<td>Històric (esdeveniments ja ocorreguts).</td>
+</tr>
+<tr>
+<td><strong>Ús principal</strong></td>
+<td>Detecció ràpida de problemes.</td>
+<td>Anàlisi i investigació d'incidències.</td>
+</tr>
+<tr>
+<td><strong>Eines comunes</strong></td>
+<td>Nagios, Prometheus, Zabbix.</td>
+<td>rsyslog, ELK Stack, Splunk.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="com-es-complementen-el-monitoratge-i-els-logs"><strong>Com es Complementen el Monitoratge i els Logs?</strong></h2>
+<p>El monitoratge i els logs són dues cares de la mateixa moneda:</p>
+<ol>
+<li><strong>Monitoratge</strong>: Proporciona una visió en temps real de l'estat del sistema. Permet detectar problemes de manera immediata i prendre decisions ràpides.</li>
+<li><strong>Logs</strong>: Proporcionen una visió històrica dels esdeveniments. Són essencials per a entendre què va passar, per què va passar i com es pot evitar en el futur.</li>
+</ol>
+<hr />
+<h1 id="directori-varlog">Directori <code>/var/log</code></h1>
+<p>El directori <code>/var/log</code> és un directori estàndard en molts sistemes operatius basats en Unix que conté registres (logs) de diversos components del sistema. Aquests logs són essencials per a auditar, depurar problemes i entendre el comportament del sistema.</p>
+<h2 id="logs-mes-comuns-a-varlog">Logs més comuns a <code>/var/log</code></h2>
+<p>A continuació es descriuen alguns dels logs més importants que es poden trobar en aquest directori:</p>
+<h3 id="1-varlogsyslog">1. <strong>/var/log/syslog</strong></h3>
+<ul>
+<li><strong>Descripció</strong>: Conté informació detallada sobre els missatges del sistema i les activitats dels processos en el sistema operatiu.</li>
+<li><strong>Ús</strong>: És útil per a auditar l'activitat general del sistema i detectar problemes en els processos.</li>
+</ul>
+<h3 id="2-varlogauthlog">2. <strong>/var/log/auth.log</strong></h3>
+<ul>
+<li><strong>Descripció</strong>: Registra les activitats d'autenticació del sistema, com ara l'inici de sessió i les accions dels usuaris.</li>
+<li><strong>Ús</strong>: És essencial per a auditar l'accés al sistema i detectar intents d'inici de sessió no autoritzats.</li>
+</ul>
+<h3 id="3-varlogkernlog">3. <strong>/var/log/kern.log</strong></h3>
+<ul>
+<li><strong>Descripció</strong>: Registra els missatges del nucli del sistema operatiu i les activitats dels dispositius de hardware.</li>
+<li><strong>Ús</strong>: És útil per a diagnosticar problemes relacionats amb el nucli (kernel) i el hardware.</li>
+</ul>
+<h3 id="4-varlogdmesg">4. <strong>/var/log/dmesg</strong></h3>
+<ul>
+<li><strong>Descripció</strong>: Proporciona informació detallada sobre l'arrencada del sistema operatiu i les activitats del nucli del sistema.</li>
+<li><strong>Ús</strong>: És útil per a revisar els missatges del nucli durant l'arrencada del sistema.</li>
+</ul>
+<h3 id="5-varlogmaillog">5. <strong>/var/log/mail.log</strong></h3>
+<ul>
+<li><strong>Descripció</strong>: Conté informació sobre el correu electrònic enviat i rebut pel sistema.</li>
+<li><strong>Ús</strong>: És útil per a auditar i solucionar problemes relacionats amb el servei de correu electrònic.</li>
+</ul>
+<h3 id="6-varlogmysqllog">6. <strong>/var/log/mysql.log</strong></h3>
+<ul>
+<li><strong>Descripció</strong>: Registra les activitats del servidor de bases de dades MySQL.</li>
+<li><strong>Ús</strong>: És essencial per a auditar i solucionar problemes relacionats amb la base de dades MySQL.</li>
+</ul>
+<h3 id="7-varlogapache2accesslog">7. <strong>/var/log/apache2/access.log</strong></h3>
+<ul>
+<li><strong>Descripció</strong>: Registra les sol·licituds HTTP rebudes pel servidor web Apache.</li>
+<li><strong>Ús</strong>: És útil per a auditar l'accés al servidor web i analitzar el trànsit.</li>
+</ul>
+<h3 id="8-varlogapache2errorlog">8. <strong>/var/log/apache2/error.log</strong></h3>
+<ul>
+<li><strong>Descripció</strong>: Registra els errors i missatges de diagnòstic del servidor web Apache.</li>
+<li><strong>Ús</strong>: És essencial per a solucionar problemes relacionats amb el servidor web.</li>
+</ul>
+<hr />
+<h2 id="altres-logs-importants">Altres logs importants</h2>
+<p>A més dels logs esmentats, el directori <code>/var/log</code> pot contenir altres arxius de registre, com ara:</p>
+<ul>
+<li><strong>Registres de seguretat</strong>: Com ara <code>/var/log/secure</code> (en alguns sistemes), que registra activitats relacionades amb la seguretat del sistema.</li>
+<li><strong>Registres del sistema de fitxers</strong>: Com ara <code>/var/log/fsck</code>, que registra informació sobre la comprovació i reparació del sistema de fitxers.</li>
+<li><strong>Registres del servidor de correu electrònic</strong>: Com ara <code>/var/log/mail.err</code>, que registra errors relacionats amb el servei de correu.</li>
+<li><strong>Registres del servidor DNS</strong>: Com ara <code>/var/log/named.log</code>, que registra les activitats del servidor DNS (BIND).</li>
+<li><strong>Registres d'altres aplicacions</strong>: Moltes aplicacions instal·lades en el sistema poden crear els seus propis logs a <code>/var/log</code>.</li>
+</ul>
+<p><img alt="Captura" src="../../custom/Selecci%C3%B3_650.png" /></p>
+<p>Aquest fitxer és un exemple de configuració de <code>logrotate</code>, una eina utilitzada per a gestionar la rotació de logs en sistemes Unix. La configuració estableix que:
+Els logs es rotaran setmanalment <code>weekly</code>.Es conservaran 4 còpies antigues <code>rotate 4</code>.Es crearà un nou fitxer de log buit després de cada rotació <code>create</code>.S'utilitzarà el grup <code>adm</code> per als fitxers de log. S'inclouen configuracions addicionals des del directori <code>/etc/logrotate.d</code>
+<img alt="Captura" src="../../custom/Selecci%C3%B3_651.png" /></p>
+<p>Si es vol configurar algun rotació en concret i especifica, aquest directori ens permetria personalitzar regles de rotació per serveis concrets.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_652.png" /></p>
+<p>Per exemple podem observar que el servei RSyslog esta programat per una rotacio de logs de cada 4 dies.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_662.png" /></p>
+<h1 id="analizi-dels-logs">Analizi dels logs</h1>
+<p>En aquest apartat mostrem com analitzar els logs d'una manera eficient i ordenada pero poder tenir en control tots els esdeveniments que es causin en el sistema. Utilizarem una eina molt potenta que es diu journactl, pero tambe existeixen Rsyslog, logAnalizer etc, en aquest cas executem aquesta comanda que ens permetra veure tots els logs filtrar per l'horari, jo he posat de 12:30 a 13:00 i he obtingut el seguent:
+<img alt="Captura" src="../../custom/Selecci%C3%B3_663.png" /></p>
+<p>Aqui executem aquest comanda per poder obtindre informació directament d'un servei, en aquest cas ho realitzem del servei Apache2 i podem observar el seu estat en directe i mes a baix un registre de logs sobre el funcionament de la mateixa.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_664.png" /></p>
+<p>Aqui en aquesta comanda obtenim logs sobre el disc principal o qualsevol que es vulgui analitzar.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_665.png" /></p>
+<h1 id="personalitzacio-dels-logs">Personalització dels Logs</h1>
+<p>En aquest apartat realitzarem una petita configuració sobre els nostres Logs per poder identificar millor el objectiu i poder personalitzar al nostre gust. En aquesta primera comanda executarem un sudo nano del fitxer /etc/rsyslog.d/50-default.conf per poder establir nova destinacio de logs, com filtres per prioritat de alerta i assignacions a altres logs. Per realitzar una simulació establim una configuració de logs del mail amb un nivell d'alerta i un altre de nivell d'error enmagatzemant els dos tipus de logs un al mail.log i l'altre al mail.err, ja que els logs es categorian per prioritat d'alerta.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_654.png" /></p>
+<p>Un cop tenim el fitxer desat, reiniciem el servei RSyslog i realitzem un tail -s per veure el comportament.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_655.png" /></p>
+<p>Amb aquesta comanda logger, el que realitzem es un error de mail per poder comprovar que ho estem desant on toca i generem el log.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_656.png" /></p>
+<p>Si tot funciona correctament haurem de realitzar un cat del fitxer on el qual es desa els logs de mail i podem observar que obtenim un log del qual habiem generat anteriorment.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_657.png" /></p>
+<p>Aqui tambe si ho hem realitzat correctament, ens mostrara un log de alerta al mail.alert.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_658.png" /></p>
+<p>Aqui ho analitzem directament als logs generics del RSyslog i veiem que tambe s'ens ha generate.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_659.png" /></p>
+<p>I aqui el mateix.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_660.png" /></p>
+<p>I aqui ho realitzem amb l'eina journalctl.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_661.png" /></p>
+<h1 id="servidor-centralitzat-de-logs">Servidor Centralitzat de Logs</h1>
+<p>En aquest apartat, t'explicarem com configurar i utilitzar un sistema de monitorització centralitzada de logs amb Grafana, Loki i Promtail. Aprendrem a implementar aquestes eines per recollir, emmagatzemar i visualitzar logs de manera eficient, creant una solució completa per a la gestió i anàlisi de dades en temps real.</p>
+<h2 id="grafana-servidor">Grafana (Servidor)</h2>
+<p>Per instal·lar el grafana realitzarem aquesta comanda seguent.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_666.png" /></p>
+<p>Despres afegirem el repositori de Grafana.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_667.png" /></p>
+<p>Afegirem la clau GPG per la verificacio dels paquets.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_670.png" /></p>
+<p>Instal·lem Grafana pero abans actualitzem repositoris.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_671.png" /></p>
+<p>Habilitem el servei Grafana-server
+<img alt="Captura" src="../../custom/Selecci%C3%B3_672.png" /></p>
+<p>Comprovem l'estat del servei.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_673.png" /></p>
+<p>Un cop descarregat accedim per la ip del servidor i al port 3000
+<img alt="Captura" src="../../custom/Selecci%C3%B3_674.png" /></p>
+<h1 id="loki-servidor">Loki (Servidor)</h1>
+<p>En aquesta captura mostrem la ip que te el servidor perque despres la necessitarem.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_675.png" /></p>
+<p>Aqui ens descarregarem el servei Loki.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_676.png" /></p>
+<p>El descomprimirem amb la comanda unzip.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_677.png" /></p>
+<p>Aqui mourem el servei al direcotri /usr/local/bin/loki i l'hi asignarem permisos d'execució.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_678.png" /></p>
+<p>Crearem un fitxer de configuració .yaml al directori /etc/ amb el nom loki-config.yaml
+<img alt="Captura" src="../../custom/Selecci%C3%B3_679.png" /></p>
+<p>Crearem el fitxer loki.service dins del directori systemd amb els mateixos parametres que observem a la captura per a que s'executi com a servei.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_683.png" /></p>
+<p>Aqui crearem el directori necessari per el seu funcionament i amb els permisos adients.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_684.png" /></p>
+<p>Finalment haurem reinciar els serveis de dimonis i habilitar el servei loki
+<img alt="Captura" src="../../custom/Selecci%C3%B3_685.png" /></p>
+<p>I comprovem amb un status i podem observar que esta operatiu.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_686.png" /></p>
+<h1 id="promtail-client">Promtail (Client)</h1>
+<p>En aquest apartat instal·larem al client el qual rebrem els seus logs al servidor, un servei que ens permetrà recol·lectar tots els logs del sistema i enviarlos al servidor.</p>
+<p>En aquesta captura inst·lem l'eina Promtail a la seva darrera versió.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_687.png" /></p>
+<p>Descrompimim amb l'unzip i procedim a moure'l de directori al /usr/local/bin/promtail i l'hi assignem permisos d'execució.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_688.png" /></p>
+<p>Aqui crearem el fitxer de configuracio .yaml de l'eina Promtail per definir els logs a recollir i per ubicar el servidor on enviarà els mateixos.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_689.png" /></p>
+<p>Crearem el directori de l'eina.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_690.png" /></p>
+<p>I crearem el fitxer promtail.service al directori sysmtemd per executar-l'ho com a servei.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_691.png" /></p>
+<p>Aplicarem configuracio i habilitarem el servei.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_692.png" /></p>
+<p>I finalment mostrarem l'estat del servei Promtail.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_693.png" /></p>
+<h1 id="anallisi-logs-servidor">Anal·lisi Logs (Servidor)</h1>
+<p>Un cop arribat aqui, ja tindrem tot el necessari per analitzar els logs via Grafana, la qual cosa vos mostrarem com crear una consulta per interficie grafica i poder analitzar els logs enviats del client al servidor.</p>
+<p>Accedirem al servidor i a l'eina grafana i ens loggejarem com a admin admin.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_694.png" /></p>
+<p>Aqui ens demanara cambiar el password.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_695.png" /></p>
+<p>Aqui establirem una query de tipus Loki (consulta de logs) a l'apartat Explorer.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_696.png" /></p>
+<p>Aqui filtarem per la query i l'hi donarem a RUN.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_697.png" /></p>
+<p>I finalment si tot surt be ens ha de puger filtrar logs del client en aquest cas Pellisa amb el servei Promtail que ens esta reenviant tots el logs al servidor.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_698.png" /></p>
+<p>I aqui ho mostro en format de barres els logs de l'acces i la configuracio del client cuan instal·lavem l'agent Promtail.
+<img alt="Captura" src="../../custom/Selecci%C3%B3_699.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      mkdocs &copy by Josep Pellisa
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>
